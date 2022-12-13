@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        std::unordered_map<int, int> indices; 
+        for (int i = 0; i < nums.size(); ++i) //created for loop to check each element in nums
+        { 
+            if (indices.find(target - nums[i]) != indices.end()) //checks (target - nums[i] first to prevent same element from being checked
+            {
+                return {indices[target - nums[i]], i}; //returns (target - value at index nums[i]), and the value of i in for loop
+            }
+            indices[nums[i]] = i; // sets i as value to be checked with the next loop
+        }
+        return {};
+    } 
+}; 
